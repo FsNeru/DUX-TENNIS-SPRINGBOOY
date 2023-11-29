@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "19b2d139-5780-4fb8-9f19-eea9eb21ebfa",
+		"name": "Tennis Dux",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23942837"
+	},
+	"item": [
+		{
+			"name": "Add Tournament",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addTournament?id=1&tournamentName=Roland Garros&tournamentSets=5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addTournament"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "tournamentName",
+							"value": "Roland Garros"
+						},
+						{
+							"key": "tournamentSets",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Player 1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addPlayer?id=1&playerName=Pepe&chanceToWin=70",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addPlayer"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "playerName",
+							"value": "Pepe"
+						},
+						{
+							"key": "chanceToWin",
+							"value": "70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Player 2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/addPlayer?id=1&playerName=Pepe&chanceToWin=70",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"addPlayer"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "playerName",
+							"value": "Pepe"
+						},
+						{
+							"key": "chanceToWin",
+							"value": "70"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Play Match",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/playTournament",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"playTournament"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

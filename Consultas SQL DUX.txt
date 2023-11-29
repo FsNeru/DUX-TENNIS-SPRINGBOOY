@@ -1,0 +1,55 @@
+Consultas SQL 
+1)Todos los productos del rubro "librería", creados hoy. 
+
+SELECT producto.*, rubro.rubro
+FROM producto
+JOIN rubro ON producto.id_rubro = rubro.id_rubro
+WHERE CONVERT(DATE, fecha_creacion) = CONVERT(DATE, GETDATE())
+AND rubro.rubro = 'Librería';
+
+
+2) Monto total vendido por cliente (mostrar nombre del cliente y monto). 
+
+SELECT cliente.nombre AS nombre_cliente, SUM(venta.monto) AS monto_total_vendido
+FROM cliente
+JOIN venta ON cliente.id_cliente = venta.id_cliente
+GROUP BY cliente.nombre, cliente.id_cliente;
+
+3)Cantidad de ventas por producto
+
+SELECT Producto.nombre AS nombre_producto, Producto.codigo, SUM(Venta.cantidad) AS cantidad_total_ventas
+FROM Producto
+JOIN Venta ON Producto.codigo = Venta.codigo_producto
+GROUP BY Producto.nombre, Producto.codigo;
+
+4)Cantidad de productos diferentes comprados por cliente en el mes actual. 
+
+SELECT
+    Venta.id_cliente,
+    COUNT(DISTINCT Producto.codigo) AS cantidad_productos_comprados
+FROM
+    Venta
+JOIN
+    Producto ON Venta.codigo_producto = Producto.codigo
+WHERE
+    MONTH(Venta.fecha) = MONTH(CURRENT_DATE)
+    AND YEAR(Venta.fecha) = YEAR(CURRENT_DATE)
+GROUP BY
+    Venta.id_cliente;
+	
+5) Ventas que tienen al menos un producto del rubro "bazar". 
+SELECT DISTINCT Venta.*
+FROM Venta
+JOIN Producto ON Venta.codigo_producto = Producto.codigo
+JOIN Rubro ON Producto.id_rubro = Rubro.idRubro
+WHERE Rubro.rubro = 'bazar';
+
+6) Rubros que no tienen ventas en los últimos 2 meses.
+SELECT Rubro.*
+FROM Rubro
+LEFT JOIN Producto ON Rubro.id_rubro = Producto.id_rubro
+LEFT JOIN Venta ON Producto.codigo = Venta.codigo_producto
+WHERE Venta.fecha IS NULL OR Venta.fecha < DATEADD(MONTH, -2, GETDATE())
+GROUP BY Rubro.id_rubro, Rubro.rubro;
+
+
